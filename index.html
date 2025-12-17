@@ -3,735 +3,263 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Белов Егор | Младший системный администратор</title>
-    <!-- Google Fonts -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Space+Grotesk:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-    <!-- Font Awesome -->
+    <title>Егор Белов | Fullstack разработчик</title>
+    <link rel="stylesheet" href="styles.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <!-- EmailJS для отправки форм -->
-    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script>
-    <!-- Favicon -->
-    <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Cpath fill='%2300f3ff' d='M50,10 L60,40 L50,50 L40,40 Z'/%3E%3C/svg%3E" type="image/svg+xml">
-    <style>
-        /* CSS Reset и базовые стили */
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
-        body {
-            font-family: 'Inter', sans-serif;
-            background: linear-gradient(135deg, #0d1b2a, #1c2541);
-            color: #ffffff;
-            min-height: 100vh;
-            line-height: 1.6;
-            overflow-x: hidden;
-        }
-
-        h1, h2, h3 {
-            font-family: 'Space Grotesk', sans-serif;
-            font-weight: 600;
-        }
-
-        .container {
-            max-width: 800px;
-            margin: 0 auto;
-            padding: 0 20px;
-        }
-
-        /* Анимации */
-        @keyframes fadeIn {
-            from { opacity: 0; transform: translateY(20px); }
-            to { opacity: 1; transform: translateY(0); }
-        }
-
-        @keyframes pulse {
-            0% { transform: scale(1); }
-            50% { transform: scale(1.05); }
-            100% { transform: scale(1); }
-        }
-
-        /* Секция Hero */
-        .hero {
-            padding: 100px 0;
-            text-align: center;
-        }
-
-        .hero h1 {
-            font-size: 3.5rem;
-            margin-bottom: 10px;
-            background: linear-gradient(90deg, #00f3ff, #8a2be2);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            animation: fadeIn 1s ease-out;
-        }
-
-        .hero h2 {
-            font-size: 1.5rem;
-            font-weight: 400;
-            color: #8a2be2;
-            margin-bottom: 30px;
-            animation: fadeIn 1.2s ease-out;
-        }
-
-        .hero-buttons {
-            margin-top: 30px;
-            display: flex;
-            justify-content: center;
-            gap: 20px;
-            flex-wrap: wrap;
-        }
-
-        /* Секция Skills */
-        .skills {
-            padding: 100px 0;
-            position: relative;
-        }
-
-        .skills h3 {
-            text-align: center;
-            margin-bottom: 60px;
-            font-size: 2.5rem;
-            color: #00f3ff;
-        }
-
-        .skills-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
-            gap: 30px;
-        }
-
-        .skill-item {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            padding: 20px;
-            border-radius: 10px;
-            background-color: rgba(255, 255, 255, 0.05);
-            transition: all 0.3s ease;
-            animation: fadeIn 0.8s ease-out;
-        }
-
-        .skill-item:hover {
-            transform: translateY(-10px);
-            box-shadow: 0 10px 25px rgba(0, 243, 255, 0.1);
-        }
-
-        .skill-icon {
-            font-size: 2.5rem;
-            margin-bottom: 15px;
-            color: #00f3ff;
-        }
-
-        .skill-name {
-            font-size: 1rem;
-            text-align: center;
-        }
-
-        /* Секция Portfolio */
-        .portfolio {
-            padding: 100px 0;
-            background-color: rgba(0, 0, 0, 0.1);
-        }
-
-        .portfolio h3 {
-            text-align: center;
-            margin-bottom: 60px;
-            font-size: 2.5rem;
-            color: #00f3ff;
-        }
-
-        .portfolio-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-            gap: 30px;
-        }
-
-        .project-card {
-            background-color: rgba(255, 255, 255, 0.05);
-            border-radius: 10px;
-            overflow: hidden;
-            transition: transform 0.3s ease;
-            animation: fadeIn 1s ease-out;
-        }
-
-        .project-card:hover {
-            transform: translateY(-10px);
-        }
-
-        .project-image {
-            height: 200px;
-            background-color: #0a192f;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 2rem;
-            color: #00f3ff;
-        }
-
-        .project-info {
-            padding: 20px;
-        }
-
-        .project-title {
-            font-size: 1.5rem;
-            margin-bottom: 10px;
-            color: #00f3ff;
-        }
-
-        .project-description {
-            font-size: 1rem;
-            color: #e0e0e0;
-        }
-
-        .project-link {
-            display: inline-block;
-            margin-top: 10px;
-            color: #00f3ff;
-            text-decoration: none;
-            font-weight: 500;
-            transition: color 0.3s ease;
-        }
-
-        .project-link:hover {
-            color: #8a2be2;
-            text-decoration: underline;
-        }
-
-        /* Секция Contact */
-        .contact {
-            padding: 100px 0;
-            text-align: center;
-        }
-
-        .contact h3 {
-            text-align: center;
-            margin-bottom: 60px;
-            font-size: 2.5rem;
-            color: #00f3ff;
-        }
-
-        .contact-form {
-            max-width: 500px;
-            margin: 0 auto;
-        }
-
-        .form-group {
-            margin-bottom: 20px;
-            text-align: left;
-        }
-
-        .form-group label {
-            display: block;
-            margin-bottom: 8px;
-            font-weight: 500;
-        }
-
-        .form-control {
-            width: 100%;
-            padding: 12px 15px;
-            background-color: rgba(255, 255, 255, 0.05);
-            border: 1px solid rgba(0, 243, 255, 0.3);
-            border-radius: 5px;
-            color: white;
-            font-family: 'Inter', sans-serif;
-        }
-
-        .form-control:focus {
-            outline: none;
-            border-color: #00f3ff;
-        }
-
-        textarea.form-control {
-            resize: vertical;
-            min-height: 100px;
-        }
-
-        .form-success, .form-error {
-            padding: 15px;
-            margin-top: 15px;
-            border-radius: 5px;
-            display: none;
-        }
-
-        .form-success {
-            background-color: rgba(0, 255, 0, 0.1);
-            color: #00ff00;
-            border: 1px solid rgba(0, 255, 0, 0.3);
-        }
-
-        .form-error {
-            background-color: rgba(255, 0, 0, 0.1);
-            color: #ff0000;
-            border: 1px solid rgba(255, 0, 0, 0.3);
-        }
-
-        .btn {
-            display: inline-block;
-            padding: 12px 30px;
-            background: linear-gradient(90deg, #00f3ff, #8a2be2);
-            color: #ffffff;
-            text-decoration: none;
-            border-radius: 5px;
-            font-weight: 500;
-            transition: all 0.3s ease;
-            border: none;
-            cursor: pointer;
-            font-family: 'Inter', sans-serif;
-            font-size: 1rem;
-        }
-
-        .btn-download {
-            background: linear-gradient(90deg, #8a2be2, #00f3ff);
-        }
-
-        .btn:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 5px 15px rgba(0, 243, 255, 0.3);
-        }
-
-        .btn:active {
-            transform: translateY(0);
-        }
-
-        .social-links {
-            margin-top: 40px;
-            display: flex;
-            justify-content: center;
-            gap: 15px;
-        }
-
-        .social-link {
-            display: inline-flex;
-            align-items: center;
-            justify-content: center;
-            width: 50px;
-            height: 50px;
-            border-radius: 50%;
-            background-color: rgba(255, 255, 255, 0.05);
-            color: #00f3ff;
-            margin: 0 10px;
-            font-size: 1.2rem;
-            transition: all 0.3s ease;
-            text-decoration: none;
-        }
-
-        .social-link:hover {
-            transform: translateY(-5px);
-            background-color: #00f3ff;
-            color: #0d1b2a;
-        }
-
-        .social-link.github:hover { background-color: #6e5494; }
-        .social-link.linkedin:hover { background-color: #0077b5; }
-        .social-link.telegram:hover { background-color: #0088cc; }
-        .social-link.email:hover { background-color: #ea4335; }
-
-        /* Footer */
-        footer {
-            padding: 40px 0;
-            text-align: center;
-            border-top: 1px solid rgba(255, 255, 255, 0.1);
-        }
-
-        .footer-content {
-            max-width: 800px;
-            margin: 0 auto;
-        }
-
-        .github-link {
-            color: #00f3ff;
-            text-decoration: none;
-            font-weight: 500;
-            transition: all 0.3s ease;
-        }
-
-        .github-link:hover {
-            text-decoration: underline;
-        }
-
-        /* Навигация */
-        nav {
-            position: fixed;
-            top: 0;
-            left: 0;
-            right: 0;
-            background: rgba(13, 27, 42, 0.9);
-            backdrop-filter: blur(10px);
-            padding: 15px 0;
-            z-index: 1000;
-            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
-        }
-
-        .nav-container {
-            max-width: 800px;
-            margin: 0 auto;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding: 0 20px;
-        }
-
-        .logo {
-            font-family: 'Space Grotesk', sans-serif;
-            font-weight: 600;
-            font-size: 1.2rem;
-            color: #00f3ff;
-            text-decoration: none;
-        }
-
-        .nav-links {
-            display: flex;
-            gap: 20px;
-        }
-
-        .nav-link {
-            color: white;
-            text-decoration: none;
-            font-weight: 500;
-            transition: color 0.3s ease;
-        }
-
-        .nav-link:hover, .nav-link.active {
-            color: #00f3ff;
-        }
-
-        /* Адаптивность */
-        @media (max-width: 768px) {
-            .hero h1 {
-                font-size: 2.5rem;
-            }
-
-            .hero h2 {
-                font-size: 1.2rem;
-            }
-
-            .hero-buttons {
-                flex-direction: column;
-                align-items: center;
-            }
-
-            .skills-grid {
-                grid-template-columns: repeat(auto-fill, minmax(100px, 1fr));
-            }
-
-            .portfolio-grid {
-                grid-template-columns: 1fr;
-            }
-
-            .contact-form {
-                padding: 0 15px;
-            }
-
-            .nav-links {
-                display: none;
-            }
-
-            .hamburger {
-                display: block;
-            }
-        }
-    </style>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
 </head>
 <body>
-    <!-- Навигация -->
-    <nav>
-        <div class="nav-container">
-            <a href="#home" class="logo">Белов Егор</a>
-            <div class="nav-links">
-                <a href="#home" class="nav-link active">Главная</a>
-                <a href="#skills" class="nav-link">Навыки</a>
-                <a href="#portfolio" class="nav-link">Проекты</a>
-                <a href="#contact" class="nav-link">Контакты</a>
-            </div>
+    <header class="header">
+        <div class="container">
+            <nav class="navbar">
+                <div class="logo">ЕБ</div>
+                <ul class="nav-links">
+                    <li><a href="#about" class="nav-link">Обо мне</a></li>
+                    <li><a href="#experience" class="nav-link">Опыт</a></li>
+                    <li><a href="#skills" class="nav-link">Навыки</a></li>
+                    <li><a href="#education" class="nav-link">Образование</a></li>
+                    <li><a href="#contact" class="nav-link">Контакты</a></li>
+                </ul>
+                <div class="hamburger">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </div>
+            </nav>
         </div>
-    </nav>
+    </header>
 
-    <!-- Секция Hero -->
     <section class="hero" id="home">
         <div class="container">
-            <h1>Белов Егор</h1>
-            <h2>Младший системный администратор</h2>
-            <div class="hero-buttons">
-                <a href="#contact" class="btn">Связаться со мной</a>
-                <a href="#" class="btn btn-download" id="downloadResume">Скачать резюме</a>
+            <div class="hero-content">
+                <h1>Белов Егор Артемович</h1>
+                <h2>Fullstack разработчик</h2>
+                <p>Начинающий специалист в IT с коммерческим опытом фриланса</p>
+                <div class="hero-buttons">
+                    <a href="#contact" class="btn btn-primary">Связаться</a>
+                    <a href="https://github.com/TaNkIsTaNdKrOsSaUtEr" target="_blank" class="btn btn-secondary">
+                        <i class="fab fa-github"></i> GitHub
+                    </a>
+                </div>
             </div>
         </div>
     </section>
 
-    <!-- Секция Skills -->
-    <section class="skills" id="skills">
+    <section class="about section" id="about">
         <div class="container">
-            <h3>Навыки</h3>
+            <h2 class="section-title">Обо мне</h2>
+            <div class="about-content">
+                <div class="about-text">
+                    <p>Привет! Я начинающий технический специалист с 7-месячным коммерческим опытом в фрилансе. Специализируюсь на fullstack-разработке, системном администрировании и IoT-решениях.</p>
+                    <p>Имею опыт работы с различными технологиями: от Python и JavaScript до низкоуровневого программирования на C и работы с микроконтроллерами. Готов браться за сложные задачи и постоянно развиваюсь в технической сфере.</p>
+                    <p>Сейчас обучаюсь в МИРЭА по специальности "Химическая технология природных энергоносителей и углеродных материалов", но мое истинное призвание - программирование и IT-технологии.</p>
+                </div>
+                <div class="about-stats">
+                    <div class="stat-item">
+                        <span class="stat-number">7</span>
+                        <span class="stat-label">месяцев опыта</span>
+                    </div>
+                    <div class="stat-item">
+                        <span class="stat-number">3+</span>
+                        <span class="stat-label">проектов</span>
+                    </div>
+                    <div class="stat-item">
+                        <span class="stat-number">18</span>
+                        <span class="stat-label">лет</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="experience section" id="experience">
+        <div class="container">
+            <h2 class="section-title">Опыт работы</h2>
+            <div class="timeline">
+                <div class="timeline-item">
+                    <div class="timeline-date">Июнь 2025 - настоящее время</div>
+                    <div class="timeline-content">
+                        <h3>Fullstack-разработчик (Фриланс)</h3>
+                        <div class="timeline-projects">
+                            <div class="project">
+                                <h4>1. Защищенный чат (Python)</h4>
+                                <p><strong>Заказчик:</strong> Стартап (локальный рынок)</p>
+                                <p><strong>Цель:</strong> Прототип мессенджера с базовым шифрованием для внутренних коммуникаций</p>
+                                <p><strong>Результат:</strong> Рабочий прототип, принятый заказчиком. Опыт работы с криптобиблиотеками (PyCryptodome)</p>
+                            </div>
+                            <div class="project">
+                                <h4>2. Система аренды снаряжения (React/Node.js)</h4>
+                                <p><strong>Заказчик:</strong> Турклуб (малый бизнес)</p>
+                                <p><strong>Цель:</strong> CRM для учета проката оборудования с интеграцией VK</p>
+                                <p><strong>Результат:</strong> Система была внедрена в эксплуатацию. Опыт работы с OAuth 2.0 и Material UI</p>
+                            </div>
+                            <div class="project">
+                                <h4>3. UART-BLE шлюз (C/Python)</h4>
+                                <p><strong>Заказчик:</strong> Инженерная компания (IoT сегмент)</p>
+                                <p><strong>Цель:</strong> Драйвер для передачи данных между микроконтроллером и ПК</p>
+                                <p><strong>Результат:</strong> Успешная передача данных между устройствами. Опыт работы с FreeRTOS и аппаратными таймерами</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="skills section" id="skills">
+        <div class="container">
+            <h2 class="section-title">Навыки</h2>
             <div class="skills-grid">
-                <div class="skill-item">
-                    <i class="fab fa-cuttlefish skill-icon"></i>
-                    <div class="skill-name">С++</div>
+                <div class="skill-category">
+                    <h3><i class="fas fa-code"></i> Языки программирования</h3>
+                    <div class="skill-tags">
+                        <span class="skill-tag">Python</span>
+                        <span class="skill-tag">JavaScript</span>
+                        <span class="skill-tag">C/C++</span>
+                        <span class="skill-tag">Java</span>
+                        <span class="skill-tag">C#</span>
+                        <span class="skill-tag">PHP</span>
+                        <span class="skill-tag">SQL</span>
+                    </div>
                 </div>
-                <div class="skill-item">
-                    <i class="fab fa-python skill-icon"></i>
-                    <div class="skill-name">Python</div>
+                
+                <div class="skill-category">
+                    <h3><i class="fas fa-server"></i> Веб-технологии</h3>
+                    <div class="skill-tags">
+                        <span class="skill-tag">HTML5</span>
+                        <span class="skill-tag">CSS3</span>
+                        <span class="skill-tag">React</span>
+                        <span class="skill-tag">Node.js</span>
+                        <span class="skill-tag">Git</span>
+                        <span class="skill-tag">Веб-дизайн</span>
+                    </div>
                 </div>
-                <div class="skill-item">
-                    <i class="fab fa-docker skill-icon"></i>
-                    <div class="skill-name">Docker</div>
+                
+                <div class="skill-category">
+                    <h3><i class="fas fa-database"></i> Базы данных</h3>
+                    <div class="skill-tags">
+                        <span class="skill-tag">MySQL</span>
+                        <span class="skill-tag">MS SQL Server</span>
+                        <span class="skill-tag">JSON</span>
+                    </div>
                 </div>
-                <div class="skill-item">
-                    <i class="fab fa-linux skill-icon"></i>
-                    <div class="skill-name">Linux</div>
+                
+                <div class="skill-category">
+                    <h3><i class="fas fa-microchip"></i> Системное администрирование</h3>
+                    <div class="skill-tags">
+                        <span class="skill-tag">Linux</span>
+                        <span class="skill-tag">Kali Linux</span>
+                        <span class="skill-tag">Windows Server</span>
+                        <span class="skill-tag">Настройка DNS</span>
+                        <span class="skill-tag">WiFi сети</span>
+                    </div>
                 </div>
-                <div class="skill-item">
-                    <i class="fab fa-windows skill-icon"></i>
-                    <div class="skill-name">Windows</div>
+                
+                <div class="skill-category">
+                    <h3><i class="fas fa-robot"></i> IoT и микроконтроллеры</h3>
+                    <div class="skill-tags">
+                        <span class="skill-tag">Arduino</span>
+                        <span class="skill-tag">FreeRTOS</span>
+                        <span class="skill-tag">Программирование микроконтроллеров</span>
+                        <span class="skill-tag">UART</span>
+                        <span class="skill-tag">BLE</span>
+                    </div>
                 </div>
-                <div class="skill-item">
-                    <i class="fab fa-git-alt skill-icon"></i>
-                    <div class="skill-name">Git</div>
+                
+                <div class="skill-category">
+                    <h3><i class="fas fa-language"></i> Языки</h3>
+                    <div class="skill-tags">
+                        <span class="skill-tag">Русский (родной)</span>
+                        <span class="skill-tag">Немецкий (B1)</span>
+                    </div>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Секция Portfolio -->
-    <section class="portfolio" id="portfolio">
+    <section class="education section" id="education">
         <div class="container">
-            <h3>Проекты</h3>
-            <div class="portfolio-grid">
-                <div class="project-card">
-                    <div class="project-image">
-                        <i class="fas fa-server"></i>
-                    </div>
-                    <div class="project-info">
-                        <h4 class="project-title">Системное администрирование</h4>
-                        <p class="project-description">Управление серверами, настройка сети и обеспечение безопасности систем.</p>
-                        <a href="#" class="project-link">Подробнее →</a>
-                    </div>
-                </div>
-                <div class="project-card">
-                    <div class="project-image">
-                        <i class="fas fa-database"></i>
-                    </div>
-                    <div class="project-info">
-                        <h4 class="project-title">Управление базами данных</h4>
-                        <p class="project-description">Настройка и администрирование PostgreSQL и MongoDB.</p>
-                        <a href="#" class="project-link">Подробнее →</a>
-                    </div>
-                </div>
-                <div class="project-card">
-                    <div class="project-image">
-                        <i class="fas fa-shield-alt"></i>
-                    </div>
-                    <div class="project-info">
-                        <h4 class="project-title">Безопасность</h4>
-                        <p class="project-description">Разработка политик безопасности и проведение аудитов систем.</p>
-                        <a href="#" class="project-link">Подробнее →</a>
-                    </div>
+            <h2 class="section-title">Образование</h2>
+            <div class="education-item">
+                <div class="education-date">2028 (ожидается)</div>
+                <div class="education-content">
+                    <h3>МИРЭА — Российский технологический университет</h3>
+                    <p class="education-specialty">ИТХТ, Химическая технология природных энергоносителей и углеродных материалов</p>
+                    <p class="education-type">Неоконченное высшее образование</p>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Секция Contact -->
-    <section class="contact" id="contact">
+    <section class="contact section" id="contact">
         <div class="container">
-            <h3>Свяжитесь со мной</h3>
-            <form class="contact-form" id="contactForm">
-                <div class="form-group">
-                    <label for="name">Имя</label>
-                    <input type="text" id="name" class="form-control" required placeholder="Ваше имя">
+            <h2 class="section-title">Контакты</h2>
+            <div class="contact-container">
+                <div class="contact-info">
+                    <div class="contact-item">
+                        <i class="fas fa-map-marker-alt"></i>
+                        <span>Москва, м. Текстильщики</span>
+                    </div>
+                    <div class="contact-item">
+                        <i class="fas fa-phone"></i>
+                        <span>+7 (977) 519-65-63</span>
+                    </div>
+                    <div class="contact-item">
+                        <i class="fas fa-envelope"></i>
+                        <span>belovegor874@gmail.com</span>
+                    </div>
+                    <div class="contact-item">
+                        <i class="fab fa-telegram"></i>
+                        <span>@Ghost_from_hell</span>
+                    </div>
+                    <div class="contact-item">
+                        <i class="fab fa-github"></i>
+                        <span><a href="https://github.com/TaNkIsTaNdKrOsSaUtEr" target="_blank">TaNkIsTaNdKrOsSaUtEr</a></span>
+                    </div>
                 </div>
-                <div class="form-group">
-                    <label for="email">Email</label>
-                    <input type="email" id="email" class="form-control" required placeholder="your@email.com">
+                <div class="contact-form">
+                    <form id="contactForm" action="https://formspree.io/f/YOUR_FORM_ID" method="POST">
+                        <div class="form-group">
+                            <label for="name">Имя:</label>
+                            <input type="text" id="name" name="name" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="email">Email:</label>
+                            <input type="email" id="email" name="email" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="subject">Тема:</label>
+                            <input type="text" id="subject" name="subject" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="message">Сообщение:</label>
+                            <textarea id="message" name="message" rows="5" required></textarea>
+                        </div>
+                        <button type="submit" class="btn btn-primary">Отправить сообщение</button>
+                    </form>
+                    <div id="formMessage" class="form-message"></div>
                 </div>
-                <div class="form-group">
-                    <label for="message">Сообщение</label>
-                    <textarea id="message" class="form-control" rows="5" required placeholder="Ваше сообщение..."></textarea>
-                </div>
-                <button type="submit" class="btn" id="submitBtn">Отправить сообщение</button>
-                <div class="form-success" id="formSuccess">
-                    ✅ Спасибо! Ваше сообщение успешно отправлено. Я свяжусь с вами в ближайшее время.
-                </div>
-                <div class="form-error" id="formError">
-                    ❌ Произошла ошибка при отправке сообщения. Пожалуйста, попробуйте еще раз или свяжитесь через социальные сети.
-                </div>
-            </form>
-            <div class="social-links">
-                <a href="https://github.com/TaNkIsTaNdKrOsSaUtEr" class="social-link github" target="_blank" aria-label="GitHub">
-                    <i class="fab fa-github"></i>
-                </a>
-                <a href="https://t.me/your_telegram" class="social-link telegram" target="_blank" aria-label="Telegram">
-                    <i class="fab fa-telegram"></i>
-                </a>
-                <a href="mailto:your.email@example.com" class="social-link email" aria-label="Email">
-                    <i class="fas fa-envelope"></i>
-                </a>
             </div>
         </div>
     </section>
 
-    <!-- Footer -->
-    <footer>
-        <div class="footer-content">
-            <p>Создан с использованием HTML, CSS и JavaScript</p>
-            <a href="https://github.com/TaNkIsTaNdKrOsSaUtEr/Resume_Belov.github.io" class="github-link" target="_blank">
-                github.com/TaNkIsTaNdKrOsSaUtEr/Resume_Belov.github.io
-            </a>
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-logo">ЕБ</div>
+                <div class="footer-text">
+                    <p>© 2025 Белов Егор Артемович. Все права защищены.</p>
+                    <p>Fullstack разработчик | Системный администратор | IoT специалист</p>
+                </div>
+                <div class="footer-social">
+                    <a href="https://github.com/TaNkIsTaNdKrOsSaUtEr" target="_blank"><i class="fab fa-github"></i></a>
+                    <a href="https://t.me/Ghost_from_hell" target="_blank"><i class="fab fa-telegram"></i></a>
+                    <a href="mailto:belovegor874@gmail.com"><i class="fas fa-envelope"></i></a>
+                </div>
+            </div>
         </div>
     </footer>
 
-    <script>
-        // Инициализация EmailJS - ЗАМЕНИТЕ НА СВОИ ДАННЫЕ
-        (function() {
-            emailjs.init("YOUR_USER_ID"); // Замените на ваш EmailJS User ID
-        })();
-
-        // Отправка формы через EmailJS
-        document.getElementById('contactForm').addEventListener('submit', function(e) {
-            e.preventDefault();
-            
-            const submitBtn = document.getElementById('submitBtn');
-            const formSuccess = document.getElementById('formSuccess');
-            const formError = document.getElementById('formError');
-            
-            // Блокируем кнопку и показываем процесс отправки
-            submitBtn.disabled = true;
-            submitBtn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Отправка...';
-            formSuccess.style.display = 'none';
-            formError.style.display = 'none';
-            
-            // Собираем данные формы
-            const templateParams = {
-                from_name: document.getElementById('name').value,
-                from_email: document.getElementById('email').value,
-                message: document.getElementById('message').value,
-                to_email: 'your.email@example.com' // Замените на ваш email
-            };
-            
-            // Отправляем через EmailJS
-            emailjs.send('YOUR_SERVICE_ID', 'YOUR_TEMPLATE_ID', templateParams) // Замените на ваши Service ID и Template ID
-                .then(function(response) {
-                    console.log('SUCCESS!', response.status, response.text);
-                    
-                    // Показываем успех
-                    formSuccess.style.display = 'block';
-                    document.getElementById('contactForm').reset();
-                    
-                    // Анимация кнопки
-                    submitBtn.innerHTML = '✅ Отправлено!';
-                    setTimeout(() => {
-                        submitBtn.innerHTML = 'Отправить сообщение';
-                        submitBtn.disabled = false;
-                    }, 3000);
-                    
-                }, function(error) {
-                    console.log('FAILED...', error);
-                    
-                    // Показываем ошибку
-                    formError.style.display = 'block';
-                    
-                    // Возвращаем кнопку в исходное состояние
-                    submitBtn.innerHTML = '❌ Ошибка, попробовать снова';
-                    setTimeout(() => {
-                        submitBtn.innerHTML = 'Отправить сообщение';
-                        submitBtn.disabled = false;
-                    }, 3000);
-                });
-        });
-
-        // Скачивание резюме (пример)
-        document.getElementById('downloadResume').addEventListener('click', function(e) {
-            e.preventDefault();
-            alert('Функция скачивания резюме будет добавлена позже. Пока вы можете связаться со мной для получения резюме.');
-            // В реальном проекте здесь будет ссылка на PDF файл
-            // window.location.href = 'path/to/your/resume.pdf';
-        });
-
-        // Плавный скролл при навигации
-        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-            anchor.addEventListener('click', function(e) {
-                e.preventDefault();
-                
-                const targetId = this.getAttribute('href');
-                if (targetId === '#') return;
-                
-                const targetElement = document.querySelector(targetId);
-                if (targetElement) {
-                    window.scrollTo({
-                        top: targetElement.offsetTop - 80, // Учитываем высоту навбара
-                        behavior: 'smooth'
-                    });
-                    
-                    // Обновляем активную ссылку в навбаре
-                    document.querySelectorAll('.nav-link').forEach(link => {
-                        link.classList.remove('active');
-                    });
-                    this.classList.add('active');
-                }
-            });
-        });
-
-        // Выделение активной секции при скролле
-        window.addEventListener('scroll', function() {
-            const sections = document.querySelectorAll('section');
-            const navLinks = document.querySelectorAll('.nav-link');
-            
-            let currentSection = '';
-            
-            sections.forEach(section => {
-                const sectionTop = section.offsetTop - 150;
-                if (pageYOffset >= sectionTop) {
-                    currentSection = section.getAttribute('id');
-                }
-            });
-            
-            navLinks.forEach(link => {
-                link.classList.remove('active');
-                if (link.getAttribute('href') === `#${currentSection}`) {
-                    link.classList.add('active');
-                }
-            });
-        });
-
-        // Анимация появления элементов при скролле
-        const observerOptions = {
-            root: null,
-            rootMargin: '0px',
-            threshold: 0.1
-        };
-
-        const observer = new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    entry.target.style.opacity = '1';
-                    entry.target.style.transform = 'translateY(0)';
-                }
-            });
-        }, observerOptions);
-
-        // Наблюдаем за карточками проектов и навыками
-        document.querySelectorAll('.project-card, .skill-item').forEach(item => {
-            item.style.opacity = '0';
-            item.style.transform = 'translateY(20px)';
-            item.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
-            observer.observe(item);
-        });
-
-        // Проверка поддержки WebP для оптимизации изображений
-        function supportsWebP() {
-            const elem = document.createElement('canvas');
-            if (!!(elem.getContext && elem.getContext('2d'))) {
-                return elem.toDataURL('image/webp').indexOf('data:image/webp') == 0;
-            }
-            return false;
-        }
-
-        if (supportsWebP()) {
-            document.documentElement.classList.add('webp-supported');
-        }
-    </script>
+    <script src="script.js"></script>
 </body>
 </html>
