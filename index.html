@@ -3,263 +3,1217 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Егор Белов | Fullstack разработчик</title>
-    <link rel="stylesheet" href="styles.css">
+    <title>Белов Егор - Fullstack-разработчик</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="icon" type="image/x-icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>💻</text></svg>">
+    <style>
+        :root {
+            --primary: #2563eb;
+            --primary-dark: #1d4ed8;
+            --secondary: #7c3aed;
+            --dark: #1f2937;
+            --light: #f9fafb;
+            --gray: #6b7280;
+            --light-gray: #e5e7eb;
+            --success: #10b981;
+            --error: #ef4444;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            line-height: 1.6;
+            color: var(--dark);
+            background-color: #f8fafc;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* Header & Navigation */
+        header {
+            background-color: white;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px 0;
+        }
+
+        .logo {
+            font-size: 24px;
+            font-weight: 700;
+            color: var(--primary);
+        }
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+            gap: 30px;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: var(--dark);
+            font-weight: 500;
+            transition: color 0.3s;
+            position: relative;
+        }
+
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background-color: var(--primary);
+            transition: width 0.3s;
+        }
+
+        .nav-links a:hover::after {
+            width: 100%;
+        }
+
+        .nav-links a:hover {
+            color: var(--primary);
+        }
+
+        .mobile-menu-btn {
+            display: none;
+            background: none;
+            border: none;
+            font-size: 24px;
+            cursor: pointer;
+            color: var(--dark);
+        }
+
+        /* Hero Section */
+        .hero {
+            padding: 100px 0;
+            background: linear-gradient(135deg, #f0f9ff 0%, #e0f2fe 100%);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            right: 0;
+            width: 40%;
+            height: 100%;
+            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" preserveAspectRatio="none"><path d="M0,0 L100,0 L100,100 Z" fill="%23dbeafe" opacity="0.3"/></svg>');
+            background-size: cover;
+        }
+
+        .hero-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 50px;
+            align-items: center;
+            position: relative;
+            z-index: 1;
+        }
+
+        .hero-text h1 {
+            font-size: 48px;
+            font-weight: 700;
+            line-height: 1.2;
+            margin-bottom: 15px;
+        }
+
+        .hero-text .highlight {
+            color: var(--primary);
+            position: relative;
+            display: inline-block;
+        }
+
+        .hero-text .highlight::after {
+            content: '';
+            position: absolute;
+            bottom: 5px;
+            left: 0;
+            width: 100%;
+            height: 8px;
+            background-color: rgba(37, 99, 235, 0.2);
+            z-index: -1;
+        }
+
+        .hero-text p {
+            font-size: 18px;
+            color: var(--gray);
+            margin-bottom: 30px;
+            max-width: 500px;
+        }
+
+        .contact-info {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 20px;
+            margin-bottom: 30px;
+        }
+
+        .contact-item {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            background-color: white;
+            padding: 10px 15px;
+            border-radius: 8px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
+            transition: transform 0.3s;
+        }
+
+        .contact-item:hover {
+            transform: translateY(-3px);
+        }
+
+        .contact-item i {
+            color: var(--primary);
+            font-size: 18px;
+        }
+
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            padding: 12px 30px;
+            background-color: var(--primary);
+            color: white;
+            border-radius: 8px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s;
+            border: none;
+            cursor: pointer;
+            box-shadow: 0 4px 6px rgba(37, 99, 235, 0.2);
+        }
+
+        .btn:hover {
+            background-color: var(--primary-dark);
+            transform: translateY(-3px);
+            box-shadow: 0 10px 20px rgba(37, 99, 235, 0.3);
+        }
+
+        .btn-secondary {
+            background-color: white;
+            color: var(--primary);
+            border: 2px solid var(--primary);
+        }
+
+        .btn-secondary:hover {
+            background-color: var(--primary);
+            color: white;
+        }
+
+        .hero-buttons {
+            display: flex;
+            gap: 15px;
+            flex-wrap: wrap;
+        }
+
+        .hero-image {
+            text-align: center;
+        }
+
+        .avatar {
+            width: 300px;
+            height: 300px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 10px solid white;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 80px;
+            margin: 0 auto;
+            transition: transform 0.5s;
+        }
+
+        .avatar:hover {
+            transform: rotate(5deg) scale(1.05);
+        }
+
+        /* Sections */
+        section {
+            padding: 100px 0;
+        }
+
+        .section-title {
+            font-size: 36px;
+            font-weight: 700;
+            text-align: center;
+            margin-bottom: 60px;
+            color: var(--dark);
+            position: relative;
+            display: inline-block;
+            left: 50%;
+            transform: translateX(-50%);
+        }
+
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 0;
+            width: 100%;
+            height: 4px;
+            background: linear-gradient(to right, var(--primary), var(--secondary));
+            border-radius: 2px;
+        }
+
+        /* Experience */
+        .experience-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+            gap: 30px;
+        }
+
+        .experience-card {
+            background-color: white;
+            border-radius: 12px;
+            padding: 30px;
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.05);
+            transition: all 0.3s;
+            border-left: 4px solid var(--primary);
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .experience-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
+        }
+
+        .experience-card h3 {
+            font-size: 22px;
+            margin-bottom: 10px;
+            color: var(--primary);
+        }
+
+        .experience-date {
+            display: inline-block;
+            background-color: #dbeafe;
+            color: var(--primary);
+            padding: 5px 15px;
+            border-radius: 20px;
+            font-size: 14px;
+            font-weight: 500;
+            margin-bottom: 15px;
+        }
+
+        .experience-card p {
+            margin-bottom: 15px;
+            color: var(--gray);
+        }
+
+        .experience-card ul {
+            padding-left: 20px;
+            margin-top: 15px;
+            flex-grow: 1;
+        }
+
+        .experience-card li {
+            margin-bottom: 10px;
+            position: relative;
+        }
+
+        .experience-card li::marker {
+            color: var(--primary);
+        }
+
+        /* Skills */
+        .skills-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 25px;
+        }
+
+        .skill-category {
+            background-color: white;
+            border-radius: 12px;
+            padding: 25px;
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.05);
+            transition: transform 0.3s;
+        }
+
+        .skill-category:hover {
+            transform: translateY(-5px);
+        }
+
+        .skill-category h3 {
+            font-size: 20px;
+            margin-bottom: 20px;
+            color: var(--primary);
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            padding-bottom: 10px;
+            border-bottom: 2px solid #f3f4f6;
+        }
+
+        .skill-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+
+        .skill-tag {
+            background-color: #f3f4f6;
+            padding: 8px 16px;
+            border-radius: 20px;
+            font-size: 14px;
+            color: var(--dark);
+            transition: all 0.3s;
+        }
+
+        .skill-tag:hover {
+            background-color: #dbeafe;
+            color: var(--primary);
+            transform: scale(1.05);
+        }
+
+        .skill-tag.highlight {
+            background-color: #dbeafe;
+            color: var(--primary);
+            font-weight: 500;
+        }
+
+        /* Contact Form */
+        .contact-section {
+            background: linear-gradient(135deg, #f0f9ff 0%, #e0f2fe 100%);
+        }
+
+        .contact-wrapper {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 50px;
+            background-color: white;
+            border-radius: 16px;
+            overflow: hidden;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+        }
+
+        .contact-info-side {
+            padding: 50px;
+            background-color: #f8fafc;
+            position: relative;
+        }
+
+        .contact-info-side::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            right: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg, rgba(37, 99, 235, 0.1) 0%, rgba(124, 58, 237, 0.1) 100%);
+            z-index: 0;
+        }
+
+        .contact-info-side h3 {
+            font-size: 28px;
+            margin-bottom: 25px;
+            color: var(--primary);
+            position: relative;
+            z-index: 1;
+        }
+
+        .contact-info-side p {
+            color: var(--gray);
+            margin-bottom: 30px;
+            position: relative;
+            z-index: 1;
+            line-height: 1.7;
+        }
+
+        .contact-details {
+            margin-top: 40px;
+            position: relative;
+            z-index: 1;
+        }
+
+        .contact-detail {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            margin-bottom: 25px;
+            padding: 15px;
+            background-color: white;
+            border-radius: 10px;
+            box-shadow: 0 3px 10px rgba(0, 0, 0, 0.05);
+            transition: transform 0.3s;
+        }
+
+        .contact-detail:hover {
+            transform: translateX(5px);
+        }
+
+        .contact-detail i {
+            width: 45px;
+            height: 45px;
+            background-color: #dbeafe;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--primary);
+            font-size: 18px;
+        }
+
+        .contact-form-side {
+            padding: 50px;
+        }
+
+        .contact-form-side h3 {
+            font-size: 28px;
+            margin-bottom: 25px;
+            color: var(--primary);
+        }
+
+        .form-group {
+            margin-bottom: 25px;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 10px;
+            font-weight: 500;
+            color: var(--dark);
+        }
+
+        .form-group input,
+        .form-group textarea,
+        .form-group select {
+            width: 100%;
+            padding: 15px;
+            border: 2px solid var(--light-gray);
+            border-radius: 8px;
+            font-family: 'Inter', sans-serif;
+            font-size: 16px;
+            transition: all 0.3s;
+            background-color: white;
+        }
+
+        .form-group input:focus,
+        .form-group textarea:focus,
+        .form-group select:focus {
+            outline: none;
+            border-color: var(--primary);
+            box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.1);
+        }
+
+        .form-group select {
+            appearance: none;
+            background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' fill='%236b7280' viewBox='0 0 16 16'%3E%3Cpath d='M7.247 11.14 2.451 5.658C1.885 5.013 2.345 4 3.204 4h9.592a1 1 0 0 1 .753 1.659l-4.796 5.48a1 1 0 0 1-1.506 0z'/%3E%3C/svg%3E");
+            background-repeat: no-repeat;
+            background-position: right 15px center;
+            background-size: 16px;
+            padding-right: 45px;
+        }
+
+        .form-status {
+            padding: 15px 20px;
+            border-radius: 8px;
+            margin-bottom: 25px;
+            display: none;
+            font-weight: 500;
+        }
+
+        .form-status.success {
+            background-color: #d1fae5;
+            color: #065f46;
+            border-left: 4px solid #10b981;
+            display: block;
+        }
+
+        .form-status.error {
+            background-color: #fee2e2;
+            color: #991b1b;
+            border-left: 4px solid #ef4444;
+            display: block;
+        }
+
+        /* Footer */
+        footer {
+            background-color: var(--dark);
+            color: white;
+            padding: 70px 0 30px;
+        }
+
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 50px;
+            margin-bottom: 50px;
+        }
+
+        .footer-logo {
+            font-size: 28px;
+            font-weight: 700;
+            margin-bottom: 20px;
+            color: white;
+        }
+
+        .footer-about p {
+            color: #d1d5db;
+            margin-bottom: 25px;
+            line-height: 1.7;
+        }
+
+        .social-links {
+            display: flex;
+            gap: 15px;
+        }
+
+        .social-links a {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 45px;
+            height: 45px;
+            background-color: #374151;
+            border-radius: 50%;
+            color: white;
+            text-decoration: none;
+            transition: all 0.3s;
+            font-size: 18px;
+        }
+
+        .social-links a:hover {
+            background-color: var(--primary);
+            transform: translateY(-3px);
+        }
+
+        .footer-links h3 {
+            font-size: 20px;
+            margin-bottom: 25px;
+            color: white;
+            position: relative;
+            padding-bottom: 10px;
+        }
+
+        .footer-links h3::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 40px;
+            height: 3px;
+            background-color: var(--primary);
+        }
+
+        .footer-links ul {
+            list-style: none;
+        }
+
+        .footer-links li {
+            margin-bottom: 15px;
+        }
+
+        .footer-links a {
+            color: #d1d5db;
+            text-decoration: none;
+            transition: color 0.3s;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .footer-links a:hover {
+            color: var(--primary);
+            padding-left: 5px;
+        }
+
+        .copyright {
+            text-align: center;
+            padding-top: 30px;
+            border-top: 1px solid #374151;
+            color: #9ca3af;
+            font-size: 15px;
+        }
+
+        /* Animation for elements */
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .fade-in {
+            animation: fadeIn 0.6s ease-out forwards;
+        }
+
+        .delay-1 { animation-delay: 0.1s; opacity: 0; }
+        .delay-2 { animation-delay: 0.2s; opacity: 0; }
+        .delay-3 { animation-delay: 0.3s; opacity: 0; }
+        .delay-4 { animation-delay: 0.4s; opacity: 0; }
+
+        /* Responsive */
+        @media (max-width: 1100px) {
+            .hero-text h1 {
+                font-size: 42px;
+            }
+            
+            .experience-grid {
+                grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+            }
+        }
+
+        @media (max-width: 992px) {
+            .hero-content {
+                grid-template-columns: 1fr;
+                text-align: center;
+                gap: 40px;
+            }
+            
+            .hero::before {
+                display: none;
+            }
+            
+            .contact-info {
+                justify-content: center;
+            }
+            
+            .contact-wrapper {
+                grid-template-columns: 1fr;
+            }
+            
+            .section-title {
+                font-size: 32px;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+                position: absolute;
+                top: 70px;
+                left: 0;
+                width: 100%;
+                background-color: white;
+                flex-direction: column;
+                padding: 20px;
+                box-shadow: 0 10px 15px rgba(0, 0, 0, 0.1);
+                border-radius: 0 0 10px 10px;
+            }
+            
+            .nav-links.active {
+                display: flex;
+            }
+            
+            .mobile-menu-btn {
+                display: block;
+            }
+            
+            .hero-text h1 {
+                font-size: 36px;
+            }
+            
+            .hero-buttons {
+                justify-content: center;
+            }
+            
+            .section-title {
+                font-size: 28px;
+                margin-bottom: 40px;
+            }
+            
+            section {
+                padding: 70px 0;
+            }
+            
+            .contact-info-side,
+            .contact-form-side {
+                padding: 30px;
+            }
+            
+            .footer-content {
+                gap: 40px;
+            }
+        }
+
+        @media (max-width: 576px) {
+            .hero-text h1 {
+                font-size: 32px;
+            }
+            
+            .hero {
+                padding: 70px 0;
+            }
+            
+            .avatar {
+                width: 250px;
+                height: 250px;
+                font-size: 70px;
+            }
+            
+            .experience-card,
+            .skill-category {
+                padding: 25px;
+            }
+            
+            .btn {
+                width: 100%;
+                justify-content: center;
+            }
+            
+            .hero-buttons {
+                flex-direction: column;
+            }
+        }
+    </style>
 </head>
 <body>
-    <header class="header">
+    <!-- Header & Navigation -->
+    <header>
         <div class="container">
-            <nav class="navbar">
-                <div class="logo">ЕБ</div>
+            <nav>
+                <div class="logo">Белов Егор</div>
                 <ul class="nav-links">
-                    <li><a href="#about" class="nav-link">Обо мне</a></li>
-                    <li><a href="#experience" class="nav-link">Опыт</a></li>
-                    <li><a href="#skills" class="nav-link">Навыки</a></li>
-                    <li><a href="#education" class="nav-link">Образование</a></li>
-                    <li><a href="#contact" class="nav-link">Контакты</a></li>
+                    <li><a href="#home">Главная</a></li>
+                    <li><a href="#experience">Опыт</a></li>
+                    <li><a href="#skills">Навыки</a></li>
+                    <li><a href="#contact">Контакты</a></li>
                 </ul>
-                <div class="hamburger">
-                    <span></span>
-                    <span></span>
-                    <span></span>
-                </div>
+                <button class="mobile-menu-btn">
+                    <i class="fas fa-bars"></i>
+                </button>
             </nav>
         </div>
     </header>
 
+    <!-- Hero Section -->
     <section class="hero" id="home">
         <div class="container">
             <div class="hero-content">
-                <h1>Белов Егор Артемович</h1>
-                <h2>Fullstack разработчик</h2>
-                <p>Начинающий специалист в IT с коммерческим опытом фриланса</p>
-                <div class="hero-buttons">
-                    <a href="#contact" class="btn btn-primary">Связаться</a>
-                    <a href="https://github.com/TaNkIsTaNdKrOsSaUtEr" target="_blank" class="btn btn-secondary">
-                        <i class="fab fa-github"></i> GitHub
-                    </a>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <section class="about section" id="about">
-        <div class="container">
-            <h2 class="section-title">Обо мне</h2>
-            <div class="about-content">
-                <div class="about-text">
-                    <p>Привет! Я начинающий технический специалист с 7-месячным коммерческим опытом в фрилансе. Специализируюсь на fullstack-разработке, системном администрировании и IoT-решениях.</p>
-                    <p>Имею опыт работы с различными технологиями: от Python и JavaScript до низкоуровневого программирования на C и работы с микроконтроллерами. Готов браться за сложные задачи и постоянно развиваюсь в технической сфере.</p>
-                    <p>Сейчас обучаюсь в МИРЭА по специальности "Химическая технология природных энергоносителей и углеродных материалов", но мое истинное призвание - программирование и IT-технологии.</p>
-                </div>
-                <div class="about-stats">
-                    <div class="stat-item">
-                        <span class="stat-number">7</span>
-                        <span class="stat-label">месяцев опыта</span>
-                    </div>
-                    <div class="stat-item">
-                        <span class="stat-number">3+</span>
-                        <span class="stat-label">проектов</span>
-                    </div>
-                    <div class="stat-item">
-                        <span class="stat-number">18</span>
-                        <span class="stat-label">лет</span>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <section class="experience section" id="experience">
-        <div class="container">
-            <h2 class="section-title">Опыт работы</h2>
-            <div class="timeline">
-                <div class="timeline-item">
-                    <div class="timeline-date">Июнь 2025 - настоящее время</div>
-                    <div class="timeline-content">
-                        <h3>Fullstack-разработчик (Фриланс)</h3>
-                        <div class="timeline-projects">
-                            <div class="project">
-                                <h4>1. Защищенный чат (Python)</h4>
-                                <p><strong>Заказчик:</strong> Стартап (локальный рынок)</p>
-                                <p><strong>Цель:</strong> Прототип мессенджера с базовым шифрованием для внутренних коммуникаций</p>
-                                <p><strong>Результат:</strong> Рабочий прототип, принятый заказчиком. Опыт работы с криптобиблиотеками (PyCryptodome)</p>
-                            </div>
-                            <div class="project">
-                                <h4>2. Система аренды снаряжения (React/Node.js)</h4>
-                                <p><strong>Заказчик:</strong> Турклуб (малый бизнес)</p>
-                                <p><strong>Цель:</strong> CRM для учета проката оборудования с интеграцией VK</p>
-                                <p><strong>Результат:</strong> Система была внедрена в эксплуатацию. Опыт работы с OAuth 2.0 и Material UI</p>
-                            </div>
-                            <div class="project">
-                                <h4>3. UART-BLE шлюз (C/Python)</h4>
-                                <p><strong>Заказчик:</strong> Инженерная компания (IoT сегмент)</p>
-                                <p><strong>Цель:</strong> Драйвер для передачи данных между микроконтроллером и ПК</p>
-                                <p><strong>Результат:</strong> Успешная передача данных между устройствами. Опыт работы с FreeRTOS и аппаратными таймерами</p>
-                            </div>
+                <div class="hero-text fade-in">
+                    <h1>Привет, я <span class="highlight">Егор Белов</span></h1>
+                    <p class="fade-in delay-1">Fullstack-разработчик с коммерческим опытом фриланса. Создаю веб-приложения, работаю с микроконтроллерами и настраиваю системы. Готов к работе над интересными проектами.</p>
+                    
+                    <div class="contact-info fade-in delay-2">
+                        <div class="contact-item">
+                            <i class="fas fa-phone"></i>
+                            <span>+7 (977) 519-65-63</span>
+                        </div>
+                        <div class="contact-item">
+                            <i class="fas fa-envelope"></i>
+                            <span>belovegor874@gmail.com</span>
+                        </div>
+                        <div class="contact-item">
+                            <i class="fas fa-map-marker-alt"></i>
+                            <span>Москва, м. Текстильщики</span>
                         </div>
                     </div>
+                    
+                    <div class="hero-buttons fade-in delay-3">
+                        <a href="#contact" class="btn">
+                            <i class="fas fa-paper-plane"></i> Связаться со мной
+                        </a>
+                        <a href="https://github.com/TaNkIsTaNdKrOsSaUtEr" target="_blank" class="btn btn-secondary">
+                            <i class="fab fa-github"></i> Мой GitHub
+                        </a>
+                    </div>
+                </div>
+                
+                <div class="hero-image fade-in delay-4">
+                    <div class="avatar">
+                        <i class="fas fa-code"></i>
+                    </div>
                 </div>
             </div>
         </div>
     </section>
 
-    <section class="skills section" id="skills">
+    <!-- Experience Section -->
+    <section id="experience">
         <div class="container">
-            <h2 class="section-title">Навыки</h2>
-            <div class="skills-grid">
-                <div class="skill-category">
-                    <h3><i class="fas fa-code"></i> Языки программирования</h3>
-                    <div class="skill-tags">
-                        <span class="skill-tag">Python</span>
-                        <span class="skill-tag">JavaScript</span>
-                        <span class="skill-tag">C/C++</span>
-                        <span class="skill-tag">Java</span>
-                        <span class="skill-tag">C#</span>
-                        <span class="skill-tag">PHP</span>
-                        <span class="skill-tag">SQL</span>
-                    </div>
+            <h2 class="section-title">Мой опыт</h2>
+            <div class="experience-grid">
+                <div class="experience-card fade-in">
+                    <h3>Fullstack-разработчик (фриланс)</h3>
+                    <div class="experience-date">Июнь 2025 — настоящее время (7 месяцев)</div>
+                    <p><strong>Индивидуальный предприниматель / частная практика</strong></p>
+                    <ul>
+                        <li><strong>Защищенный чат (Python)</strong> — прототип мессенджера с базовым шифрованием для внутренних коммуникаций. Опыт работы с PyCryptodome.</li>
+                        <li><strong>Система аренды снаряжения (React/Node.js)</strong> — CRM для учета проката оборудования с интеграцией VK. Внедрена в эксплуатацию.</li>
+                        <li><strong>UART-BLE шлюз (C/Python)</strong> — драйвер для передачи данных между микроконтроллером и ПК. Опыт работы с FreeRTOS и аппаратными таймерами.</li>
+                    </ul>
                 </div>
                 
-                <div class="skill-category">
-                    <h3><i class="fas fa-server"></i> Веб-технологии</h3>
+                <div class="experience-card fade-in delay-1">
+                    <h3>Образование</h3>
+                    <div class="experience-date">2024 — 2028 (ожидаемое)</div>
+                    <p><strong>МИРЭА — Российский технологический университет</strong></p>
+                    <p>Факультет: ИТХТ<br>Специальность: Химическая технология природных энергоносителей и углеродных материалов</p>
+                    <p><em>Неоконченное высшее образование</em></p>
+                    <p>Сочетаю техническое образование с практическими навыками программирования.</p>
+                </div>
+                
+                <div class="experience-card fade-in delay-2">
+                    <h3>Карьерные цели</h3>
+                    <div class="experience-date">Начинающий специалист в IT</div>
+                    <p><strong>Желаемая должность:</strong> Программист, разработчик</p>
+                    <p><strong>Зарплата:</strong> 40 000 ₽ на руки</p>
+                    <p><strong>Занятость:</strong> Полная, частичная, проектная работа, стажировка</p>
+                    <p><strong>График:</strong> Полный день, гибкий график, удаленная работа</p>
+                    <p><strong>Локация:</strong> Готов к переезду в Московскую область, не готов к командировкам</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Skills Section -->
+    <section id="skills">
+        <div class="container">
+            <h2 class="section-title">Мои навыки</h2>
+            <div class="skills-container">
+                <div class="skill-category fade-in">
+                    <h3><i class="fas fa-code"></i> Веб-разработка</h3>
                     <div class="skill-tags">
-                        <span class="skill-tag">HTML5</span>
-                        <span class="skill-tag">CSS3</span>
+                        <span class="skill-tag highlight">Python</span>
+                        <span class="skill-tag highlight">JavaScript</span>
+                        <span class="skill-tag">HTML/CSS</span>
                         <span class="skill-tag">React</span>
                         <span class="skill-tag">Node.js</span>
-                        <span class="skill-tag">Git</span>
-                        <span class="skill-tag">Веб-дизайн</span>
-                    </div>
-                </div>
-                
-                <div class="skill-category">
-                    <h3><i class="fas fa-database"></i> Базы данных</h3>
-                    <div class="skill-tags">
-                        <span class="skill-tag">MySQL</span>
-                        <span class="skill-tag">MS SQL Server</span>
+                        <span class="skill-tag">VK API</span>
                         <span class="skill-tag">JSON</span>
+                        <span class="skill-tag">Веб-программирование</span>
                     </div>
                 </div>
                 
-                <div class="skill-category">
-                    <h3><i class="fas fa-microchip"></i> Системное администрирование</h3>
+                <div class="skill-category fade-in delay-1">
+                    <h3><i class="fas fa-server"></i> Системы & Базы данных</h3>
                     <div class="skill-tags">
-                        <span class="skill-tag">Linux</span>
+                        <span class="skill-tag highlight">Linux</span>
                         <span class="skill-tag">Kali Linux</span>
-                        <span class="skill-tag">Windows Server</span>
-                        <span class="skill-tag">Настройка DNS</span>
+                        <span class="skill-tag">Администрирование серверов</span>
+                        <span class="skill-tag">SQL</span>
+                        <span class="skill-tag">MySQL</span>
+                        <span class="skill-tag">MS SQL</span>
+                        <span class="skill-tag">Работа с базами данных</span>
+                        <span class="skill-tag">Git</span>
+                    </div>
+                </div>
+                
+                <div class="skill-category fade-in delay-2">
+                    <h3><i class="fas fa-microchip"></i> Программирование & Оборудование</h3>
+                    <div class="skill-tags">
+                        <span class="skill-tag highlight">C++</span>
+                        <span class="skill-tag">C</span>
+                        <span class="skill-tag">Микроконтроллеры</span>
+                        <span class="skill-tag">Arduino</span>
+                        <span class="skill-tag">FreeRTOS</span>
+                        <span class="skill-tag">UART/BLE</span>
+                        <span class="skill-tag">Программирование микроконтроллеров</span>
                         <span class="skill-tag">WiFi сети</span>
                     </div>
                 </div>
                 
-                <div class="skill-category">
-                    <h3><i class="fas fa-robot"></i> IoT и микроконтроллеры</h3>
+                <div class="skill-category fade-in delay-3">
+                    <h3><i class="fas fa-language"></i> Языки & Другое</h3>
                     <div class="skill-tags">
-                        <span class="skill-tag">Arduino</span>
-                        <span class="skill-tag">FreeRTOS</span>
-                        <span class="skill-tag">Программирование микроконтроллеров</span>
-                        <span class="skill-tag">UART</span>
-                        <span class="skill-tag">BLE</span>
+                        <span class="skill-tag highlight">Русский (родной)</span>
+                        <span class="skill-tag">Немецкий (B1 - средний)</span>
+                        <span class="skill-tag">Системный администратор</span>
+                        <span class="skill-tag">Настройка ПК</span>
+                        <span class="skill-tag">Работа с документами</span>
+                        <span class="skill-tag">Поиск информации</span>
+                        <span class="skill-tag">Администрирование сайтов</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section class="contact-section" id="contact">
+        <div class="container">
+            <h2 class="section-title">Свяжитесь со мной</h2>
+            <div class="contact-wrapper">
+                <div class="contact-info-side fade-in">
+                    <h3>Контактная информация</h3>
+                    <p>Ищу возможности для профессионального роста в IT-сфере. Открыт для предложений о работе, сотрудничестве или стажировках. Всегда готов к изучению новых технологий и решению интересных задач.</p>
+                    
+                    <div class="contact-details">
+                        <div class="contact-detail">
+                            <i class="fas fa-phone"></i>
+                            <div>
+                                <strong>Телефон / WhatsApp</strong>
+                                <p>+7 (977) 519-65-63</p>
+                            </div>
+                        </div>
+                        <div class="contact-detail">
+                            <i class="fas fa-envelope"></i>
+                            <div>
+                                <strong>Email</strong>
+                                <p>belovegor874@gmail.com</p>
+                            </div>
+                        </div>
+                        <div class="contact-detail">
+                            <i class="fab fa-telegram"></i>
+                            <div>
+                                <strong>Telegram</strong>
+                                <p>@Ghost_from_hell</p>
+                            </div>
+                        </div>
+                        <div class="contact-detail">
+                            <i class="fas fa-map-marker-alt"></i>
+                            <div>
+                                <strong>Местоположение</strong>
+                                <p>Москва, м. Текстильщики</p>
+                            </div>
+                        </div>
+                        <div class="contact-detail">
+                            <i class="fab fa-github"></i>
+                            <div>
+                                <strong>GitHub</strong>
+                                <p>github.com/TaNkIsTaNdKrOsSaUtEr</p>
+                            </div>
+                        </div>
                     </div>
                 </div>
                 
-                <div class="skill-category">
-                    <h3><i class="fas fa-language"></i> Языки</h3>
-                    <div class="skill-tags">
-                        <span class="skill-tag">Русский (родной)</span>
-                        <span class="skill-tag">Немецкий (B1)</span>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <section class="education section" id="education">
-        <div class="container">
-            <h2 class="section-title">Образование</h2>
-            <div class="education-item">
-                <div class="education-date">2028 (ожидается)</div>
-                <div class="education-content">
-                    <h3>МИРЭА — Российский технологический университет</h3>
-                    <p class="education-specialty">ИТХТ, Химическая технология природных энергоносителей и углеродных материалов</p>
-                    <p class="education-type">Неоконченное высшее образование</p>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <section class="contact section" id="contact">
-        <div class="container">
-            <h2 class="section-title">Контакты</h2>
-            <div class="contact-container">
-                <div class="contact-info">
-                    <div class="contact-item">
-                        <i class="fas fa-map-marker-alt"></i>
-                        <span>Москва, м. Текстильщики</span>
-                    </div>
-                    <div class="contact-item">
-                        <i class="fas fa-phone"></i>
-                        <span>+7 (977) 519-65-63</span>
-                    </div>
-                    <div class="contact-item">
-                        <i class="fas fa-envelope"></i>
-                        <span>belovegor874@gmail.com</span>
-                    </div>
-                    <div class="contact-item">
-                        <i class="fab fa-telegram"></i>
-                        <span>@Ghost_from_hell</span>
-                    </div>
-                    <div class="contact-item">
-                        <i class="fab fa-github"></i>
-                        <span><a href="https://github.com/TaNkIsTaNdKrOsSaUtEr" target="_blank">TaNkIsTaNdKrOsSaUtEr</a></span>
-                    </div>
-                </div>
-                <div class="contact-form">
+                <div class="contact-form-side fade-in delay-1">
+                    <h3>Форма обратной связи</h3>
+                    <div class="form-status" id="formStatus"></div>
                     <form id="contactForm" action="https://formspree.io/f/mvgeeaql" method="POST">
                         <div class="form-group">
-                            <label for="name">Имя:</label>
-                            <input type="text" id="name" name="name" required>
+                            <label for="name">Ваше имя *</label>
+                            <input type="text" id="name" name="name" required placeholder="Введите ваше имя">
                         </div>
                         <div class="form-group">
-                            <label for="email">Email:</label>
-                            <input type="email" id="email" name="email" required>
+                            <label for="email">Ваш Email *</label>
+                            <input type="email" id="email" name="email" required placeholder="example@mail.com">
                         </div>
                         <div class="form-group">
-                            <label for="subject">Тема:</label>
-                            <input type="text" id="subject" name="subject" required>
+                            <label for="subject">Тема сообщения *</label>
+                            <select id="subject" name="subject" required>
+                                <option value="" disabled selected>Выберите тему</option>
+                                <option value="job-offer">Предложение о работе</option>
+                                <option value="project">Проект / Сотрудничество</option>
+                                <option value="internship">Стажировка</option>
+                                <option value="question">Вопрос</option>
+                                <option value="other">Другое</option>
+                            </select>
                         </div>
                         <div class="form-group">
-                            <label for="message">Сообщение:</label>
-                            <textarea id="message" name="message" rows="5" required></textarea>
+                            <label for="message">Сообщение *</label>
+                            <textarea id="message" name="message" rows="6" required placeholder="Опишите детали вашего предложения или вопрос..."></textarea>
                         </div>
-                        <button type="submit" class="btn btn-primary">Отправить сообщение</button>
+                        <button type="submit" class="btn">
+                            <i class="fas fa-paper-plane"></i> Отправить сообщение
+                        </button>
                     </form>
-                    <div id="formMessage" class="form-message"></div>
                 </div>
             </div>
         </div>
     </section>
 
-    <footer class="footer">
+    <!-- Footer -->
+    <footer>
         <div class="container">
             <div class="footer-content">
-                <div class="footer-logo">ЕБ</div>
-                <div class="footer-text">
-                    <p>© 2025 Белов Егор Артемович. Все права защищены.</p>
-                    <p>Fullstack разработчик | Системный администратор | IoT специалист</p>
+                <div class="footer-about">
+                    <div class="footer-logo">Белов Егор Артемович</div>
+                    <p>Начинающий Fullstack-разработчик с практическим опытом в создании веб-приложений, работе с микроконтроллерами и администрировании систем. Всегда открыт к новым вызовам и возможностям для роста.</p>
+                    <div class="social-links">
+                        <a href="https://github.com/TaNkIsTaNdKrOsSaUtEr" target="_blank" title="GitHub">
+                            <i class="fab fa-github"></i>
+                        </a>
+                        <a href="https://t.me/Ghost_from_hell" target="_blank" title="Telegram">
+                            <i class="fab fa-telegram"></i>
+                        </a>
+                        <a href="mailto:belovegor874@gmail.com" title="Email">
+                            <i class="fas fa-envelope"></i>
+                        </a>
+                    </div>
                 </div>
-                <div class="footer-social">
-                    <a href="https://github.com/TaNkIsTaNdKrOsSaUtEr" target="_blank"><i class="fab fa-github"></i></a>
-                    <a href="https://t.me/Ghost_from_hell" target="_blank"><i class="fab fa-telegram"></i></a>
-                    <a href="mailto:belovegor874@gmail.com"><i class="fas fa-envelope"></i></a>
+                
+                <div class="footer-links">
+                    <h3>Навигация</h3>
+                    <ul>
+                        <li><a href="#home"><i class="fas fa-chevron-right"></i> Главная</a></li>
+                        <li><a href="#experience"><i class="fas fa-chevron-right"></i> Опыт работы</a></li>
+                        <li><a href="#skills"><i class="fas fa-chevron-right"></i> Навыки</a></li>
+                        <li><a href="#contact"><i class="fas fa-chevron-right"></i> Контакты</a></li>
+                    </ul>
                 </div>
+                
+                <div class="footer-links">
+                    <h3>Контакты</h3>
+                    <ul>
+                        <li><a href="tel:+79775196563"><i class="fas fa-phone"></i> +7 (977) 519-65-63</a></li>
+                        <li><a href="mailto:belovegor874@gmail.com"><i class="fas fa-envelope"></i> belovegor874@gmail.com</a></li>
+                        <li><a href="https://t.me/Ghost_from_hell" target="_blank"><i class="fab fa-telegram"></i> @Ghost_from_hell</a></li>
+                        <li><a href="https://github.com/TaNkIsTaNdKrOsSaUtEr" target="_blank"><i class="fab fa-github"></i> GitHub</a></li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="copyright">
+                <p>&copy; 2025 Белов Егор Артемович. Все права защищены.</p>
+                <p>Сайт-визитка разработана для GitHub Pages</p>
             </div>
         </div>
     </footer>
 
-    <script src="script.js"></script>
+    <script>
+        // Mobile menu toggle
+        document.querySelector('.mobile-menu-btn').addEventListener('click', function() {
+            document.querySelector('.nav-links').classList.toggle('active');
+            this.querySelector('i').classList.toggle('fa-bars');
+            this.querySelector('i').classList.toggle('fa-times');
+        });
+        
+        // Close mobile menu when clicking a link
+        document.querySelectorAll('.nav-links a').forEach(link => {
+            link.addEventListener('click', () => {
+                document.querySelector('.nav-links').classList.remove('active');
+                document.querySelector('.mobile-menu-btn i').classList.remove('fa-times');
+                document.querySelector('.mobile-menu-btn i').classList.add('fa-bars');
+            });
+        });
+        
+        // Form submission handling
+        const contactForm = document.getElementById('contactForm');
+        const formStatus = document.getElementById('formStatus');
+        
+        // Clear any previous status messages on page load
+        formStatus.textContent = '';
+        formStatus.classList.remove('success', 'error');
+        
+        contactForm.addEventListener('submit', async function(event) {
+            event.preventDefault();
+            
+            // Disable the submit button to prevent double submission
+            const submitButton = contactForm.querySelector('button[type="submit"]');
+            const originalButtonText = submitButton.innerHTML;
+            submitButton.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Отправка...';
+            submitButton.disabled = true;
+            
+            // Clear previous status
+            formStatus.textContent = '';
+            formStatus.classList.remove('success', 'error');
+            
+            try {
+                // Create FormData object from the form
+                const formData = new FormData(contactForm);
+                
+                // Send data to Formspree
+                const response = await fetch('https://formspree.io/f/mvgeeaql', {
+                    method: 'POST',
+                    body: formData,
+                    headers: {
+                        'Accept': 'application/json'
+                    }
+                });
+                
+                if (response.ok) {
+                    // Success - show success message
+                    formStatus.textContent = '✅ Сообщение успешно отправлено! Я свяжусь с вами в ближайшее время.';
+                    formStatus.classList.add('success');
+                    
+                    // Reset the form
+                    contactForm.reset();
+                    
+                    // Scroll to show the success message
+                    formStatus.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+                    
+                    // Log success (optional)
+                    console.log('Form submitted successfully to Formspree');
+                } else {
+                    // Handle Formspree errors
+                    const errorData = await response.json();
+                    if (errorData.errors) {
+                        formStatus.textContent = '❌ ' + errorData.errors.map(error => error.message).join(', ');
+                    } else {
+                        formStatus.textContent = '❌ Произошла ошибка при отправке формы. Пожалуйста, попробуйте еще раз.';
+                    }
+                    formStatus.classList.add('error');
+                }
+            } catch (error) {
+                // Network error
+                console.error('Form submission error:', error);
+                formStatus.textContent = '❌ Ошибка сети. Пожалуйста, проверьте подключение к интернету или свяжитесь со мной другим способом.';
+                formStatus.classList.add('error');
+            } finally {
+                // Re-enable the submit button
+                submitButton.innerHTML = originalButtonText;
+                submitButton.disabled = false;
+            }
+        });
+        
+        // Smooth scrolling for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                e.preventDefault();
+                
+                // Close mobile menu if open
+                document.querySelector('.nav-links').classList.remove('active');
+                document.querySelector('.mobile-menu-btn i').classList.remove('fa-times');
+                document.querySelector('.mobile-menu-btn i').classList.add('fa-bars');
+                
+                const targetId = this.getAttribute('href');
+                if(targetId === '#') return;
+                
+                const targetElement = document.querySelector(targetId);
+                if(targetElement) {
+                    window.scrollTo({
+                        top: targetElement.offsetTop - 80,
+                        behavior: 'smooth'
+                    });
+                }
+            });
+        });
+        
+        // Add fade-in animation to elements when they come into view
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+        
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('fade-in');
+                    observer.unobserve(entry.target);
+                }
+            });
+        }, observerOptions);
+        
+        // Observe all elements with fade-in class
+        document.querySelectorAll('.fade-in').forEach(el => {
+            observer.observe(el);
+        });
+        
+        // Add current year to copyright
+        document.addEventListener('DOMContentLoaded', function() {
+            const yearElement = document.querySelector('.copyright p');
+            if (yearElement) {
+                yearElement.innerHTML = yearElement.innerHTML.replace('2025', new Date().getFullYear());
+            }
+        });
+    </script>
 </body>
 </html>
